@@ -204,8 +204,8 @@ const Webinars = () => {
                             </Link>
                             
                             <div class="web-date-time">
-                            {formatDate(val?.web_date_time) + '/ ET'} 
-                                {/* {dayjs(val?.web_date_time).format("DD MMM YYYY hh:mm A")} / ET */}
+                            {/* {formatDate(val?.web_date_time) + '/ ET'}  */}
+                                {dayjs(val?.web_date_time).format("DD MMM YYYY hh:mm A")} / ET
                             </div>
                         </div>
                     </div>
