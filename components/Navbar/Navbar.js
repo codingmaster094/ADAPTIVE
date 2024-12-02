@@ -296,7 +296,7 @@ function Navbar({ hostname }) {
                       >
                         Request a Demo
                       </Link> */}
-                    <Link className="button" href={`${url2}`}>
+                    <Link className="button" href={`https://app2.adaptive-investments.com/`}>
                       Launch App
                     </Link>
                     <Link

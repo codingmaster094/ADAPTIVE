@@ -4,6 +4,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import PageLoader from "@/components/PageLoader/PageLoader";
 import Head from "next/head";
+import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const Webinars = () => {
     const router = useRouter();
     const { slug } = router.query;
@@ -32,6 +39,19 @@ const Webinars = () => {
     
         fetchData();
       }, [slug]);
+
+      const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/New_York', // Convert to Eastern Time (ET)
+          day: '2-digit', // 2-digit day
+          month: 'short', // Short month (e.g., 'Nov')
+          year: 'numeric', // Full year
+          hour: '2-digit', // 2-digit hour
+          minute: '2-digit', // 2-digit minute
+          hour12: true, // 12-hour format with AM/PM
+        }).format(date);
+      };
 
   return (
     <>
@@ -64,7 +84,9 @@ const Webinars = () => {
         <div class="webcontent">
             <div class="container ">
             {
-                WebinarsData?.webinars_contents?.map((val,i)=>(
+                WebinarsData?.webinars_contents?.slice() 
+                .reverse()?.map((val,i)=>  {
+                    return (
                     <div class="web-main-content" key={i}>
                     <div class="title-web">
                         <p>
@@ -161,7 +183,7 @@ const Webinars = () => {
                             </div>
                         </div>
                         <div class="web-buttton">
-                            <Link href={val.webinars_button.url} target="">{val.webinars_button.title}
+                            <Link href={val.webinars_button.url} target="_black" >{val.webinars_button.title}
                                 <svg
                                     width="20"
                                     height="20"
@@ -182,12 +204,14 @@ const Webinars = () => {
                             </Link>
                             
                             <div class="web-date-time">
-                                {val?.web_date_time}
+                            {formatDate(val?.web_date_time) + '/ ET'} 
+                                {/* {dayjs(val?.web_date_time).format("DD MMM YYYY hh:mm A")} / ET */}
                             </div>
                         </div>
                     </div>
                 </div>
-                ))
+                )
+                } )
             }
             </div>
         </div>

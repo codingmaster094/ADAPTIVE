@@ -84,7 +84,7 @@ const Blog = () => {
                     </div>
                     <div className="blog-text">
                       <div className="blog-title">
-                        <Link href="#">
+                        <Link href={`/company/${slug}/${val.id}`}>
                           <h3>{val.title.rendered}</h3>
                         </Link>
                       </div>
