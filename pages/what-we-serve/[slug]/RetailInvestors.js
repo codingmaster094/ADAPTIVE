@@ -72,7 +72,7 @@ export default function WhatWeDo() {
           content="Adaptive, AdaptiveInvestmentSolutions, Adaptive Investment Solutions, Downside Protection, DownsideProtection, VIX, Implied Volatility, ImpliedVolatility, Market Risk, MarketRisk, Volatility Tax, VolatilityTax"
         />
       </Head>
-      <HeroSection
+       <HeroSection
         title={retail_investorsData?.retail_investors_banner_main_title}
         subtitle={retail_investorsData?.retail_investors_banner_sub_title}
         content={retail_investorsData?.retail_investors_banner_content}

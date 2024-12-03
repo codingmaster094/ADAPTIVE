@@ -6,7 +6,7 @@ export default function Layout({ children, hostname }) {
     return (
         <>
         <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico"  />
         </Head>
             <Navbar hostname={hostname} />
             <main className="maindiv">{children}</main>
